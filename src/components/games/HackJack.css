@@ -1,0 +1,21 @@
+.hackjack-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+}
+
+.hackjack-container * {
+  font-family: 'Courier New', Courier, monospace !important;
+  color: green;
+}
+
+.hackjack-side-container {
+  border: 2px white dashed;
+  padding: 20px;
+  width: 260px;
+}
+
+.hackjack-middle-container {
+  flex-grow: 1;
+}
