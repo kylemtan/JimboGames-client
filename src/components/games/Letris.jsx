@@ -354,7 +354,7 @@ function Letris(props) {
         if (board[r][c] === "") {
           continue;
         }
-        for (let d = 0; d < 4; d++) {
+        for (let d = 0; d < 2; d++) {
           let formedWord = board[r][c];
           for (let len = 1; len < 15; len++) {
             if (r + len * dirsY[d] > 14 || c + len * dirsX[d] > 6) {
