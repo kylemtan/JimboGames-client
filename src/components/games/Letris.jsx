@@ -340,8 +340,8 @@ function Letris(props) {
   };
 
   const checkBoardForWords = () => {
-    let dirsX = [1, 0, 1, 1];
-    let dirsY = [0, 1, -1, 1];
+    let dirsX = [1, 0];
+    let dirsY = [0, 1];
 
     let removedIndices = [{ x: 3, y: 0 }];
 
