@@ -31,4 +31,12 @@ export const GameSelectors = [
   //   playerMin: 2,
   //   playerMax: 2,
   // },
+  {
+    gameID: "sushi_goat",
+    name: "Sushi Goat",
+    description:
+      "Create high-scoring words to fill your sushi boat and have the better boat at the end to become the sushi goat!",
+    playerMin: 2,
+    playerMax: 2,
+  },
 ];
