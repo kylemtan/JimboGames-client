@@ -15,7 +15,7 @@
 .sushi-goat-word-container {
   position: absolute;
   display: flex;
-  top: 50px;
+  bottom: 60px;
 }
 
 .sushi-goat-word-container-letter {
@@ -26,15 +26,16 @@
 
 .sushi-goat-submit {
   position: absolute;
-  bottom: 50px;
+  bottom: 10px;
   background-color: green;
   font-size: 32px;
   cursor: pointer;
 }
 
 .sushi-goat-boat-container {
-  width: 50%;
-  height: 100%;
+  width: calc(50% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
   background-color: pink;
 }
 

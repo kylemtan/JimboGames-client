@@ -7,8 +7,7 @@ import Home from './components/Home';
 import Lobby from './components/Lobby';
 import Game from './components/Game';
 
-// const socket = io.connect("http://localhost:3001");
-const socket = io.connect("jimbogames-server-production.up.railway.app");
+const socket = io.connect(process.env.NODE_ENV === "production" ? "jimbogames-server-production.up.railway.app" : "http://localhost:3001");
 
 function App() {
   const [room, setRoom] = useState("");
