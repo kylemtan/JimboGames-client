@@ -23,12 +23,12 @@ export const GameSelectors = [
     playerMin: 1,
     playerMax: 8,
   },
-  {
-    gameID: "hackjack",
-    name: "HackJack",
-    description:
-      "A PvP twist on the classic blackjack game where the goal is to steal as much data as you can without going over your storage. Use programs to give yourself the upper hand over your opponent and hack into their system before they can hack yours.",
-    playerMin: 2,
-    playerMax: 2,
-  },
+  // {
+  //   gameID: "hackjack",
+  //   name: "HackJack",
+  //   description:
+  //     "A PvP twist on the classic blackjack game where the goal is to steal as much data as you can without going over your storage. Use programs to give yourself the upper hand over your opponent and hack into their system before they can hack yours.",
+  //   playerMin: 2,
+  //   playerMax: 2,
+  // },
 ];

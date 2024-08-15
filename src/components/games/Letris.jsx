@@ -5,7 +5,7 @@ import { useWordChecker } from "react-word-checker";
 import downwordSkyline from "../../assets/downword-skyline.svg";
 
 function Letris(props) {
-  const [stars, setStars] = useState([])
+  const [stars, setStars] = useState([]);
 
   const notificationAnimation = useAnimation();
   const host = props.roomInfo.players[0] === props.name ? true : false;
@@ -15,21 +15,111 @@ function Letris(props) {
   const [words, setWords] = useState([]);
   const [score, setScore] = useState(0);
   const [borders, setBorders] = useState([
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, 
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
   ]);
 
   const [timerInterval, setTimerInterval] = useState(10000);
@@ -40,33 +130,33 @@ function Letris(props) {
     foundIndicesRef.current = data;
     _setFoundIndices(data);
     let tempBorders = [
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
-      [false, false, false, false, false, false, false], 
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
     ];
     for (let r = 0; r < 15; r++) {
       for (let c = 0; c < 7; c++) {
-       for (let i = 0; i < data.length; i++) {
-        if (data[i].x === c && data[i].y === r) {
-          tempBorders[r][c] = true;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].x === c && data[i].y === r) {
+            tempBorders[r][c] = true;
+          }
         }
-       }
       }
     }
 
-    setBorders([...tempBorders])
+    setBorders([...tempBorders]);
   };
 
   const [board, _updateBoard] = useState([
@@ -165,7 +255,7 @@ function Letris(props) {
   const [letterShadow, _setLetterShadow] = useState({
     row: 19,
     column: 3,
-  })
+  });
 
   const letterShadowRef = useRef(letterShadow);
   const setLetterShadow = (data) => {
@@ -177,10 +267,11 @@ function Letris(props) {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      console.log(stars)
+      console.log(stars);
       if (
-        e.key === "ArrowLeft" && 
-        currentLetter.column !== 0 && currentLetter.row > 0 &&
+        e.key === "ArrowLeft" &&
+        currentLetter.column !== 0 &&
+        currentLetter.row > 0 &&
         board[currentLetter.row][currentLetter.column - 1] === ""
       ) {
         setCurrentLetter({
@@ -191,16 +282,17 @@ function Letris(props) {
         for (let i = 14; i >= 0; i--) {
           if (board[i][currentLetter.column - 1] === "") {
             setLetterShadow({
-              ...letterShadow, 
+              ...letterShadow,
               row: i,
-              column: currentLetter.column - 1
-            })
+              column: currentLetter.column - 1,
+            });
             break;
           }
         }
       } else if (
         e.key === "ArrowRight" &&
-        currentLetter.column !== 6 && currentLetter.row > 0 &&
+        currentLetter.column !== 6 &&
+        currentLetter.row > 0 &&
         board[currentLetter.row][currentLetter.column + 1] === ""
       ) {
         setCurrentLetter({
@@ -211,16 +303,16 @@ function Letris(props) {
         for (let i = 14; i >= 0; i--) {
           if (board[i][currentLetter.column + 1] === "") {
             setLetterShadow({
-              ...letterShadow, 
+              ...letterShadow,
               row: i,
-              column: currentLetter.column + 1
-            })
+              column: currentLetter.column + 1,
+            });
             break;
           }
         }
       } else if (e.key === "ArrowDown" && currentLetter.row > 0) {
-        setScore((score) => score + 100)
-        console.log(0)
+        setScore((score) => score + 100);
+        console.log(0);
         for (let i = 14; i >= 0; i--) {
           if (board[i][currentLetter.column] === "") {
             let tempBoard = board;
@@ -247,11 +339,11 @@ function Letris(props) {
       starMap.push({
         x: Math.floor(Math.random() * window.innerWidth),
         y: Math.random() * window.innerHeight,
-        size: Math.random() * 5 + 5
-      })
+        size: Math.random() * 5 + 5,
+      });
     }
 
-    setStars([...starMap])
+    setStars([...starMap]);
 
     if (host) {
       props.socket.emit("iniialize_letris_game", props.room, (res) => {
@@ -267,9 +359,13 @@ function Letris(props) {
       });
     }
 
+    notificationAnimation.set({
+      color: "yellow",
+    });
     notificationAnimation
       .start({
         opacity: 0,
+        transition: { duration: 4.5 },
       })
       .then(() => {
         setNotification("GO!");
@@ -278,13 +374,12 @@ function Letris(props) {
     const waitTimer = setTimeout(() => {
       notificationAnimation.set({ opacity: 1 });
       notificationAnimation.start({
+        color: "green",
         opacity: 0,
         transition: { duration: 1 },
       });
-      const startTimer = setTimeout(() => {
-        setTimerInterval(600);
-      }, 1000);
-    }, 3000);
+      setTimerInterval(600);
+    }, 5000);
   }, []);
 
   useEffect(() => {
@@ -297,21 +392,21 @@ function Letris(props) {
         dropBoard(indices);
 
         if (!checkBoardForWords()) {
-        setFoundIndices([...[]]);
-        updateLetrisGame();
-        setCurrentLetter({ ...letter, row: letter.row + 1 });
+          setFoundIndices([...[]]);
+          updateLetrisGame();
+          setCurrentLetter({ ...letter, row: letter.row + 1 });
 
-        for (let i = 14; i >= 0; i--) {
-          if (board[i][3] === "") {
-            setLetterShadow({
-              ...letterShadow, 
-              row: i,
-              column: 3
-            })
-            break;
+          for (let i = 14; i >= 0; i--) {
+            if (board[i][3] === "") {
+              setLetterShadow({
+                ...letterShadow,
+                row: i,
+                column: 3,
+              });
+              break;
+            }
           }
         }
-      }
       } else {
         if (letter.row === 14 || board[letter.row + 1][letter.column] !== "") {
           let tempBoard = boardRef.current;
@@ -364,7 +459,7 @@ function Letris(props) {
               formedWord += board[r + len * dirsY[d]][c + len * dirsX[d]];
               if (word.wordExists(formedWord) && len > 2) {
                 tempWords.push(formedWord);
-                scoreChange += 1000 * Math.pow(5, (formedWord.length - 4));
+                scoreChange += 1000 * Math.pow(5, formedWord.length - 4);
                 numScoreChange++;
                 for (let i = 0; i <= len; i++) {
                   removedIndices.push({
@@ -384,8 +479,12 @@ function Letris(props) {
     setWords([...tempWords, ...words]);
 
     if (scoreChange > 0) {
-      setScore(score + scoreChange * Math.pow(4, numScoreChange - 1))
-      setNotification(`${numScoreChange > 1 ? "COMBO x" + numScoreChange + "! " : ""} +${scoreChange * Math.pow(4, numScoreChange - 1)}`);
+      setScore(score + scoreChange * Math.pow(4, numScoreChange - 1));
+      setNotification(
+        `${numScoreChange > 1 ? "COMBO x" + numScoreChange + "! " : ""} +${
+          scoreChange * Math.pow(4, numScoreChange - 1)
+        }`
+      );
       notificationAnimation.set({ opacity: 1, color: "yellow" });
       notificationAnimation.start({
         opacity: 0,
@@ -394,11 +493,11 @@ function Letris(props) {
     }
 
     if (removedIndices.length > 1) {
-      setTimerInterval(timerInterval + 1)
+      setTimerInterval(timerInterval + 1);
     }
 
     setFoundIndices([...removedIndices]);
-    
+
     return numScoreChange > 0;
   };
 
@@ -422,6 +521,26 @@ function Letris(props) {
     for (let i = 0; i < 7; i++) {
       if (board[2][i] !== "") {
         setTimerInterval(999999);
+        alert("Game Over! Score: " + score + "\nPress OK to play again.");
+        setScore(0);
+        updateBoard([...[
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+          ["", "", "", "", "", "", ""],
+        ]]);
+        setTimerInterval(600);
       }
     }
 
@@ -432,10 +551,10 @@ function Letris(props) {
     });
 
     setLetterShadow({
-      ...letterShadow, 
+      ...letterShadow,
       row: 0,
-      column: 3
-    })
+      column: 3,
+    });
 
     setNextLetter(letterPicker());
   };
@@ -443,13 +562,21 @@ function Letris(props) {
   return (
     <div className="letris-container">
       <div className="letris-star-container">
-        {
-          stars.map((star, index) => (
-            <div key={index} className="letris-star" style={{ top: star.y + "px", left: star.x + "px", height: star.size + "px", width: star.size + "px"}}></div>
-          ))
-        }
+        {stars.map((star, index) => (
+          <div
+            key={index}
+            className="letris-star"
+            style={{
+              top: star.y + "px",
+              left: star.x + "px",
+              height: star.size + "px",
+              width: star.size + "px",
+            }}
+          ></div>
+        ))}
       </div>
-      <img src={downwordSkyline} className="letris-skyline"/>
+      <div class="clouds"></div>
+      <img src={downwordSkyline} className="letris-skyline" />
       <div>
         {/* {props.roomInfo.gameInfo.letrisInfo.map((viewedBoard, index) => (
           <Fragment key={index}>
@@ -522,12 +649,22 @@ function Letris(props) {
                       : "",
                   }}
                 >
-                  <span style={!(currentLetter.row === rowIndex &&
-                    currentLetter.column === columnIndex) && (letterShadow.row === rowIndex && letterShadow.column === columnIndex)
-                      ? {color: "#999999"}
-                      : {}}>
+                  <span
+                    style={
+                      !(
+                        currentLetter.row === rowIndex &&
+                        currentLetter.column === columnIndex
+                      ) &&
+                      letterShadow.row === rowIndex &&
+                      letterShadow.column === columnIndex
+                        ? { color: "#999999" }
+                        : {}
+                    }
+                  >
                     {(currentLetter.row === rowIndex &&
-                    currentLetter.column === columnIndex) || (letterShadow.row === rowIndex && letterShadow.column === columnIndex)
+                      currentLetter.column === columnIndex) ||
+                    (letterShadow.row === rowIndex &&
+                      letterShadow.column === columnIndex)
                       ? currentLetter.letter
                       : ""}
                     {letter}

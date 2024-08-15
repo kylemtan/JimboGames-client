@@ -1,0 +1,15 @@
+.sushi-goat-container {
+  width: 100%;
+  height: 100%;
+}
+
+.sushi-goat-vertical-split {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.sushi-goat-letter-container {
+  height: 100%; 
+}

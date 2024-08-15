@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "./HackJack.css";
 
+import { HackjackPrograms } from "../constants/HackjackPrograms"
+
 function HackJack(props) {
   const host = props.roomInfo.players[0] === props.name ? true : false;
   const game = props.roomInfo.gameInfo.hackjackInfo;
-  const spectator = game.players.includes(props.name) ? false : true;
+  const spectator = game?.players?.includes(props.name) ? false : true;
 
   const [messages, setMessages] = useState([
     "# COMMENTS:",
@@ -31,28 +33,34 @@ function HackJack(props) {
     //first, shuffle a new deck
     let tempDeck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     shuffleDeck(tempDeck);
+    tempHackJackInfo.deck = tempDeck;
 
     tempHackjackInfo.board.storage[game.players[0]] = [
       {
-        number: tempHackJackInfotempDeck.pop(),
+        number: tempHackJackInfo.deck.pop(),
         encrypted: true
       },
       {
-        number: tempHackJackInfotempDeck.pop(),
+        number: tempHackJackInfo.deck.pop(),
         encrypted: false
       }
     ]
     tempHackjackInfo.board.storage[game.players[1]] = [
       {
-        number: tempHackJackInfotempDeck.pop(),
+        number: tempHackJackInfo.deck.pop(),
         encrypted: true
       },
       {
-        number: tempHackJackInfotempDeck.pop(),
+        number: tempHackJackInfo.deck.pop(),
         encrypted: false
       }
     ]
     
+    tempHackjackInfo.board.programs[game.players[0]] = [
+      {
+        
+      }
+    ]
 
     
   };

@@ -1,14 +1,18 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
 import "./Game.css";
 
 // games
 import GolfGulf from './games/GolfGulf';
 import Letris from "./games/Letris";
 import HackJack from "./games/HackJack";
+import SushiGoat from "./games/SushiGoat";
 
 function Game(props) {
   const navigate = useNavigate();
+
+  const loadingAnimation = useAnimation();
 
   const gameSwitch = (gameID) => {
     switch (gameID) {
@@ -20,10 +24,19 @@ function Game(props) {
         return <Letris socket={props.socket} room={props.room} name={props.name} roomInfo={props.roomInfo} updateRoom={props.updateRoom}/>
       case 'hackjack':
         return <HackJack socket={props.socket} room={props.room} name={props.name} roomInfo={props.roomInfo} updateRoom={props.updateRoom}/>
-        default: 
+      case 'sushi_goat':
+        return <SushiGoat socket={props.socket} room={props.room} name={props.name} roomInfo={props.roomInfo} updateRoom={props.updateRoom}/>
+      default: 
         return;
     }
   }
+
+  useEffect(() => {
+    loadingAnimation.set({ x: 0, });
+    loadingAnimation.start({
+      x: window.innerWidth + 200,
+    });
+  }, [])
 
   useEffect(() => {
     if (props.room === "") {
@@ -40,6 +53,15 @@ function Game(props) {
       <div className="game-box">
         { gameSwitch(props.roomInfo.gameInfo.gameID) }
       </div>
+      <motion.div
+        className="splash-screen"
+        animate={loadingAnimation}
+        transition={{ ease: "easeInOut", duration: 1 }}
+      >
+        <div className="big-logo">
+          <h1>JimboGames</h1>
+        </div>
+      </motion.div>
     </div>
   );
 }

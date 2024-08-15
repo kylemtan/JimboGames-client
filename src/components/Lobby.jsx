@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import "./Lobby.css";
 import { GameSelectors as games } from "./constants/GameSelectors";
 
@@ -11,7 +11,14 @@ function Lobby(props) {
 
   const host = props.roomInfo.players[0] === props.name ? " (Host)" : "";
 
-  let animationX = `${window.innerWidth + 200}px`;
+  const loadingAnimation = useAnimation();
+
+  useEffect(() => {
+    loadingAnimation.set({ x: 0, });
+    loadingAnimation.start({
+      x: window.innerWidth + 200,
+    });
+  }, [])
 
   useEffect(() => {
     if (props.room === "") {
@@ -19,7 +26,11 @@ function Lobby(props) {
     }
 
     props.socket.on("starting_game", () => {
-      navigate("/" + props.room + "/game/" + props.roomInfo.gameInfo.gameID);
+      loadingAnimation.start({
+        x: 0,
+      }).then(() => {
+        navigate("/" + props.room + "/game/" + props.roomInfo.gameInfo.gameID);
+      });
     });
   }, [props.socket]);
 
@@ -66,8 +77,11 @@ function Lobby(props) {
   const startGame = () => {
     props.socket.emit("start_game", props.room, (res) => {
       if (res.success) {
-        navigate("/" + props.room + "/game/" + props.roomInfo.gameInfo.gameID);
-      } else {
+        loadingAnimation.start({
+          x: 0,
+        }).then(() => {
+          navigate("/" + props.room + "/game/" + props.roomInfo.gameInfo.gameID);
+        });      } else {
         alert(res.message);
       }
     });
@@ -214,7 +228,7 @@ function Lobby(props) {
       </div>
       <motion.div
         className="splash-screen"
-        animate={{ x: animationX }}
+        animate={loadingAnimation}
         transition={{ ease: "easeInOut", duration: 1 }}
       >
         <div className="big-logo">

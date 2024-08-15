@@ -7,8 +7,8 @@ import Home from './components/Home';
 import Lobby from './components/Lobby';
 import Game from './components/Game';
 
-// const socket = io.connect("http://localhost:3001");
-const socket = io.connect("jimbogames-server-production.up.railway.app");
+const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("jimbogames-server-production.up.railway.app");
 
 function App() {
   const [room, setRoom] = useState("");
@@ -31,6 +31,18 @@ function App() {
   const updateRoom = (players, ready, gameInfo) => {
     setRoomInfo((roomInfo) => ({...roomInfo, players: [...players], ready: [...ready], gameInfo: gameInfo}));
   }
+
+  const [isBack, setIsBack] = useState(false);
+
+  const handleEvent = () => {
+    setIsBack(true);
+    window.history.go(0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("popstate", handleEvent);
+    return () => window.removeEventListener("popstate", handleEvent);
+  });
 
   useEffect(() => {
     socket.on("room_update", (data) => {
