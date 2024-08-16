@@ -99,7 +99,7 @@ function SushiGoat(props) {
     }
 
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 16);
+    time.setSeconds(time.getSeconds() + 30);
     restart(time)
 
     setBoard([...tempBoard]);
@@ -181,7 +181,7 @@ function SushiGoat(props) {
     resume,
     restart,
   } = useTimer({
-    expiryTimestamp: new Date().setSeconds(new Date().getSeconds() + 16),
+    expiryTimestamp: new Date().setSeconds(new Date().getSeconds() + 30),
     onExpire: () => {
       submitWord(true)
     },
@@ -200,7 +200,6 @@ function SushiGoat(props) {
         alert("Could not initialize game");
       }
     });
-    console.log(new Date().setSeconds(new Date().getSeconds() + 16))
   }, []);
 
   useEffect(() => {
